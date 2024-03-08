@@ -1,0 +1,47 @@
+[package]
+name = "threats"
+version = "1.0.0"
+authors.workspace = true
+edition.workspace = true
+license = "Apache-2.0"
+description = "Threats"
+publish = false
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "3.4.0" }
+assert_matches = "1.5.0"
+
+# Substrate
+sp-runtime = { version = "28.0.0" }
+sp-std = { version = "12.0.0" }
+sp-arithmetic = { version = "20.0.0" }
+sp-core = { version = "25.0.0" }
+frame-support = { version = "25.0.0" }
+frame-system = { version = "25.0.0" }
+pallet-assets = { version = "26.0.0" }
+pallet-balances = { version = "25.0.0" }
+pallet-asset-conversion = { version = "7.0.0" }
+
+# Polkadot
+polkadot-core-primitives = { version = "4.0.0" }
+polkadot-parachain-primitives = { version = "3.0.0" }
+polkadot-runtime-parachains = { version = "4.0.0" }
+xcm = { version = "4.0.0", package = "staging-xcm" }
+pallet-xcm = { version = "4.0.0" }
+
+# Cumulus
+parachains-common = { version = "4.0.0" }
+xcm-emulator = { version = "0.2.0" }
+asset-hub-kusama-runtime = { git = "https://github.com/polkadot-fellows/runtimes", branch = "release-v1.1.2" }
+
+# Local
+network = { workspace = true }
+casino-runtime = { workspace = true }
+pallet-raffle = { workspace = true }
+pallet-poker = { workspace = true }
+pallet-slots = { workspace = true }
+
+[features]
+runtime-benchmarks = [
+    "network/runtime-benchmarks"
+]

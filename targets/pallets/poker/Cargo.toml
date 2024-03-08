@@ -1,0 +1,52 @@
+[package]
+name = "pallet-poker"
+version = "1.0.0"
+authors.workspace = true
+edition.workspace = true
+repository.workspace = true
+license = "Apache-2.0"
+description = "Poker for Casino"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "3.6.1", default-features = false, features = [
+	"derive",
+] }
+scale-info = { version = "2.10.0", default-features = false, features = ["derive"] }
+frame-benchmarking = { version = "25.0.0", default-features = false, optional = true }
+frame-support = { version = "25.0.0", default-features = false }
+frame-system = { version = "25.0.0", default-features = false }
+sp-runtime = { version = "28.0.0", default-features = false }
+sp-std = { version = "12.0.0", default-features = false }
+sp-core = { version = "25.0.0", default-features = false }
+pallet-insecure-randomness-collective-flip = { version = "13.0.0", default-features = false }
+
+[dev-dependencies]
+pallet-balances = { version = "25.0.0" }
+sp-core = { version = "25.0.0" }
+sp-io = { version = "27.0.0" }
+
+[features]
+default = [ "std" ]
+std = [
+	"codec/std",
+	"frame-benchmarking?/std",
+	"frame-support/std",
+	"frame-system/std",
+	"scale-info/std",
+	"sp-runtime/std",
+	"sp-std/std",
+]
+runtime-benchmarks = [
+	"frame-benchmarking/runtime-benchmarks",
+	"frame-support/runtime-benchmarks",
+	"frame-system/runtime-benchmarks",
+	"sp-runtime/runtime-benchmarks",
+]
+try-runtime = [
+	"frame-support/try-runtime",
+	"frame-system/try-runtime",
+	"sp-runtime/try-runtime",
+]
