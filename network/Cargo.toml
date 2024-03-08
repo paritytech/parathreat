@@ -1,0 +1,77 @@
+[package]
+name = "parathreat-network"
+version = "1.0.0"
+description = "Polkadot SDK environment to execute the exploits through integration tests using XCM emulator and Kusama/Polkadot runtimes."
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "3.4.0" }
+paste = "1.0.14"
+serde_json = "1.0.108"
+
+# Substrate
+grandpa-primitives = { package = "sp-consensus-grandpa", version = "10.0.0" }
+sp-authority-discovery = { version = "23.0.0" }
+sp-runtime = { version = "28.0.0" }
+frame-support = { version = "25.0.0" }
+sp-core = { version = "25.0.0" }
+sp-consensus-babe = { version = "0.29.0" }
+pallet-assets = { version = "26.0.0" }
+pallet-balances = { version = "25.0.0" }
+pallet-message-queue = { version = "28.0.0" }
+pallet-im-online = { version = "24.0.0" }
+pallet-staking = { version = "25.0.0" }
+beefy-primitives = { package = "sp-consensus-beefy", version = "10.0.0" }
+
+# Polkadot
+polkadot-primitives = { version = "4.0.0" }
+polkadot-runtime-parachains = { version = "4.0.0" }
+xcm = { package = "staging-xcm", version = "4.0.0" }
+pallet-xcm = { version = "4.0.0" }
+polkadot-core-primitives = { version = "4.0.0" }
+polkadot-parachain-primitives = { version = "3.0.0" }
+
+# Cumulus
+parachains-common = { version = "4.0.0" }
+cumulus-primitives-core = { version = "0.4.0" }
+xcm-emulator = { version = "0.2.0" }
+cumulus-pallet-xcmp-queue = { version = "0.4.0" }
+cumulus-pallet-parachain-system = { features = ["parameterized-consensus-hook",] , version = "0.4.0" }
+asset-test-utils = { version = "4.0.0" }
+cumulus-pallet-dmp-queue = { version = "0.4.0" }
+penpal-runtime = { version = "0.11.1" }
+
+# Runtimes
+kusama-runtime = { package="staging-kusama-runtime", git = "https://github.com/polkadot-fellows/runtimes", branch = "release-v1.1.2" }
+kusama-runtime-constants = { git = "https://github.com/polkadot-fellows/runtimes", branch = "release-v1.1.2" }
+polkadot-runtime = { git = "https://github.com/polkadot-fellows/runtimes", branch = "release-v1.1.2" }
+polkadot-runtime-constants = { git = "https://github.com/polkadot-fellows/runtimes", branch = "release-v1.1.2" }
+asset-hub-polkadot-runtime = { git = "https://github.com/polkadot-fellows/runtimes", branch = "release-v1.1.2" }
+asset-hub-kusama-runtime = { git = "https://github.com/polkadot-fellows/runtimes", branch = "release-v1.1.2" }
+collectives-polkadot-runtime = { git = "https://github.com/polkadot-fellows/runtimes", branch = "release-v1.1.2" }
+bridge-hub-polkadot-runtime = { git = "https://github.com/polkadot-fellows/runtimes", branch = "release-v1.1.2" }
+bridge-hub-kusama-runtime = { git = "https://github.com/polkadot-fellows/runtimes", branch = "release-v1.1.2" }
+
+# Bridges
+bp-messages = { version = "0.4.0" }
+pallet-bridge-messages = { version = "0.4.0" }
+bridge-runtime-common = { version = "0.4.0" }
+
+# Local
+casino-runtime = { workspace = true }
+
+[features]
+runtime-benchmarks = [
+    "penpal-runtime/runtime-benchmarks",
+    "kusama-runtime/runtime-benchmarks",
+    "polkadot-runtime/runtime-benchmarks",
+    "asset-hub-polkadot-runtime/runtime-benchmarks",
+    "asset-hub-kusama-runtime/runtime-benchmarks",
+    "collectives-polkadot-runtime/runtime-benchmarks",
+    "bridge-hub-polkadot-runtime/runtime-benchmarks",
+    "bridge-hub-kusama-runtime/runtime-benchmarks",
+    "casino-runtime/runtime-benchmarks",
+]

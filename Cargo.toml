@@ -1,0 +1,34 @@
+[workspace.package]
+version = "1.0.0"
+authors = ["Parity Technologies <admin@parity.io>"]
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/orgs/paritytech/parathreat"
+
+[workspace]
+resolver = "2"
+
+members = [
+	"targets/pallets/*",
+	"targets/runtimes/*",
+	"cli/*",
+	"network",
+	"threats",
+]
+
+[profile.release]
+# Polkadot runtime requires unwinding.
+panic = "unwind"
+opt-level = 3
+
+[profile.production]
+inherits = "release"
+lto = true
+codegen-units = 1
+
+[workspace.dependencies]
+network = { package = "parathreat-network", path = "network" }
+casino-runtime = { path = "targets/runtimes/casino" }
+pallet-raffle = { path = "targets/pallets/raffle" }
+pallet-poker = { path = "targets/pallets/poker" }
+pallet-slots = { path = "targets/pallets/slots" }
